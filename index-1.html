@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f5eee8">
+  <title>Undangan Pernikahan</title>
+  <style>
+    :root {
+      --cream: #f7f1eb;
+      --paper: #fffdf9;
+      --brown: #806b5d;
+      --dark: #493d35;
+      --rose: #c99b91;
+      --line: #e7d9cf;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--dark);
+      font-family: Georgia, "Times New Roman", serif;
+      background: var(--cream);
+      text-align: center;
+    }
+    .page {
+      min-height: 100vh;
+      padding: 28px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background:
+        radial-gradient(ellipse at top left, rgba(201,155,145,.16), transparent 38%),
+        radial-gradient(ellipse at bottom right, rgba(128,107,93,.12), transparent 38%),
+        var(--cream);
+    }
+    .invitation {
+      width: min(100%, 680px);
+      padding: 48px 28px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      outline: 1px solid rgba(231,217,207,.65);
+      outline-offset: 7px;
+      box-shadow: 0 18px 55px rgba(73,61,53,.08);
+    }
+    .eyebrow {
+      color: var(--rose);
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font: 11px Arial, sans-serif;
+    }
+    .ornament { color: var(--rose); font-size: 25px; margin: 18px 0; }
+    h1 {
+      margin: 10px 0;
+      font-size: clamp(38px, 8vw, 62px);
+      line-height: 1.1;
+      font-weight: normal;
+      color: var(--brown);
+    }
+    .ampersand { color: var(--rose); font-style: italic; font-size: .8em; }
+    .intro {
+      max-width: 470px;
+      margin: 22px auto;
+      font: 14px/1.9 Arial, sans-serif;
+      color: #786b62;
+    }
+    .detail-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      max-width: 490px;
+      margin: 30px auto;
+    }
+    .detail {
+      padding: 17px 10px;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .detail strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--rose);
+      font: 10px Arial, sans-serif;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .detail span { font-size: 16px; line-height: 1.5; }
+    .venue {
+      max-width: 450px;
+      margin: 0 auto 28px;
+      font: 14px/1.8 Arial, sans-serif;
+      color: #786b62;
+    }
+    .venue h2 {
+      margin: 0 0 8px;
+      color: var(--rose);
+      font: 10px Arial, sans-serif;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .countdown-title {
+      margin: 28px 0 14px;
+      color: var(--brown);
+      font-size: 18px;
+      font-style: italic;
+    }
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .time-box {
+      min-width: 72px;
+      padding: 12px 8px;
+      background: #f7f1eb;
+      border: 1px solid var(--line);
+    }
+    .time-box b { display: block; font-size: 25px; font-weight: normal; color: var(--brown); }
+    .time-box small {
+      display: block;
+      margin-top: 4px;
+      color: #98877b;
+      font: 9px Arial, sans-serif;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .closing {
+      margin: 30px auto 0;
+      font: italic 14px/1.8 Arial, sans-serif;
+      color: #8a786c;
+    }
+    .footer {
+      margin-top: 22px;
+      color: var(--rose);
+      font: 10px Arial, sans-serif;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    @media (max-width: 420px) {
+      .invitation { padding: 38px 18px; }
+      .detail-grid { grid-template-columns: 1fr; gap: 0; }
+      .detail { border-bottom: 0; }
+      .detail:last-child { border-bottom: 1px solid var(--line); }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="invitation">
+      <div class="eyebrow">The Wedding Invitation</div>
+      <div class="ornament">✧ ❀ ✧</div>
+      <p class="intro">
+        Dengan penuh rasa syukur, kami mengundang Bapak/Ibu/Saudara/i
+        untuk hadir dan memberikan doa restu pada acara pernikahan kami.
+      </p>
+
+      <h1 id="bride">Nama Mempelai Wanita</h1>
+      <h1 class="ampersand">&amp;</h1>
+      <h1 id="groom">Nama Mempelai Pria</h1>
+
+      <div class="ornament">❦</div>
+      <div class="detail-grid">
+        <div class="detail">
+          <strong>Tanggal</strong>
+          <span id="dateText">Hari, tanggal bulan tahun</span>
+        </div>
+        <div class="detail">
+          <strong>Waktu</strong>
+          <span id="timeText">00.00 WIB – selesai</span>
+        </div>
+      </div>
+
+      <div class="venue">
+        <h2>Tempat Acara</h2>
+        <div id="placeText">Nama gedung / lokasi acara</div>
+        <div id="addressText">Alamat lengkap tempat acara</div>
+      </div>
+
+      <div class="eyebrow">Countdown to Our Special Day</div>
+      <div class="countdown-title">Menuju Hari Bahagia</div>
+      <div class="countdown" aria-live="polite">
+        <div class="time-box"><b id="days">00</b><small>Hari</small></div>
+        <div class="time-box"><b id="hours">00</b><small>Jam</small></div>
+        <div class="time-box"><b id="minutes">00</b><small>Menit</small></div>
+        <div class="time-box"><b id="seconds">00</b><small>Detik</small></div>
+      </div>
+
+      <p class="closing">
+        Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila
+        Bapak/Ibu/Saudara/i berkenan hadir. Terima kasih atas doa dan restunya.
+      </p>
+      <div class="footer">With love · Together Forever</div>
+    </section>
+  </main>
+
+  <script>
+    /*
+      EDIT DATA UNDANGAN DI BAGIAN INI.
+      Format tanggal countdown: YYYY-MM-DDTHH:MM:SS+07:00
+    */
+    const wedding = {
+      bride: "Nama Mempelai Wanita",
+      groom: "Nama Mempelai Pria",
+      dateText: "Hari, tanggal bulan tahun",
+      timeText: "00.00 WIB – selesai",
+      placeText: "Nama gedung / lokasi acara",
+      addressText: "Alamat lengkap tempat acara",
+      date: "2027-01-01T09:00:00+07:00"
+    };
+
+    document.getElementById("bride").textContent = wedding.bride;
+    document.getElementById("groom").textContent = wedding.groom;
+    document.getElementById("dateText").textContent = wedding.dateText;
+    document.getElementById("timeText").textContent = wedding.timeText;
+    document.getElementById("placeText").textContent = wedding.placeText;
+    document.getElementById("addressText").textContent = wedding.addressText;
+
+    const target = new Date(wedding.date).getTime();
+    function updateCountdown() {
+      const now = Date.now();
+      let distance = target - now;
+
+      if (Number.isNaN(target)) {
+        document.querySelector(".countdown").innerHTML = "Atur tanggal countdown pada bagian data undangan.";
+        return;
+      }
+      if (distance <= 0) {
+        document.querySelector(".countdown").innerHTML = "Hari bahagia telah tiba!";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      distance %= 1000 * 60 * 60 * 24;
+      const hours = Math.floor(distance / (1000 * 60 * 60));
+      distance %= 1000 * 60 * 60;
+      const minutes = Math.floor(distance / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("days").textContent = String(days).padStart(2, "0");
+      document.getElementById("hours").textContent = String(hours).padStart(2, "0");
+      document.getElementById("minutes").textContent = String(minutes).padStart(2, "0");
+      document.getElementById("seconds").textContent = String(seconds).padStart(2, "0");
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
